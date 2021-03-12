@@ -1,7 +1,6 @@
 from django.db import models
 
 
-#fields = {title of the review: Char, the content of review: TextField, author: Char, star rating : float, date of review : date , closed with lender : bool }
 # Create your models here.
 class Review(models.Model):
   title = models.CharField(max_length=250)
