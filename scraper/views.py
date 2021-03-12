@@ -25,15 +25,17 @@ def url_works(url):
 def scrape(request):
   page_count = 1
   def paginate(page_count):
+    
     while page_count < 11:
       url = f'https://www.lendingtree.com/reviews/personal/first-midwest-bank/52903183?sort=cmV2aWV3c3VibWl0dGVkX2Rlc2M=&pid={page_count}'
       page = requests.get(url)
+      
       if url_works(page) == True:
         soup = BeautifulSoup(page.content, 'html.parser')
         results_review = soup.find(class_='lenderReviews')
         elems = results_review.find_all(class_='col-xs-12 mainReviews')
         elems += results_review.find_all(class_='col-xs-12 mainReviews hiddenReviews')
-          
+        #intirates through found reviews and populates database
         for elem in elems:
           review = Review()
           review.title = elem.find('p', class_='reviewTitle').text.strip()
