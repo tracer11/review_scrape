@@ -10,8 +10,8 @@ import json
 
 # Create your views here.
 
-class ReviewAPI(viewsets.ModelViewSet):
-  queryet = Review.objects.all()
+class ReviewViewSet(viewsets.ModelViewSet):
+  queryset = Review.objects.all()
   serializer_class = ReviewSerializer
 
 #check to see if url is valid
